@@ -11,10 +11,12 @@ export class TaskService {
   constructor() {}
 
   insertTasks(task: string) {
-    const uniq = new Date().getTime();
-    const tempTask: Task = { id: uniq, AllTask: task, completed: false };
-    this.allTasks.push(tempTask);
-    console.log(this.allTasks);
+    if (task !== undefined && task !== '') {
+      const uniq = new Date().getTime();
+      const tempTask: Task = { id: uniq, AllTask: task, completed: false };
+      this.allTasks.push(tempTask);
+      console.log(this.allTasks);
+    }
   }
 
   chargeDatas() {
