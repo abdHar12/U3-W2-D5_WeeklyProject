@@ -1,23 +1,32 @@
 <div id="containerDonePage">
   <ng-container *ngIf="!getCharge(); else charging">
     <div>
-      <div *ngIf="allTasks">
+      <ng-container *ngIf="presenceCompletedTask; else noTasks">
         <div *ngFor="let task of allTasks">
           <ng-container *ngIf="task.completed">
             <div class="task">
               <span>{{ task.AllTask }}</span>
               <div>
-                <button class="task-buttons" (click)="removeTask(task.id)">
+                <button
+                  class="task-buttons"
+                  (click)="removeTask(task.id); verifyCompletedTask()"
+                >
                   Elimina il task
                 </button>
-                <button class="task-buttons" (click)="incompleteTask(task.id)">
+                <button
+                  class="task-buttons"
+                  (click)="incompleteTask(task.id); verifyCompletedTask()"
+                >
                   Task non concluso
                 </button>
               </div>
             </div>
           </ng-container>
         </div>
-      </div>
+      </ng-container>
+      <ng-template #noTasks>
+        <p>Nessun task completato</p>
+      </ng-template>
     </div>
   </ng-container>
   <ng-template #charging>

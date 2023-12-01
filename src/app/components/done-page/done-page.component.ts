@@ -10,12 +10,28 @@ export class DonePageComponent implements OnInit {
   allTasks: Task[] = [];
   task!: string;
   charge!: boolean;
+  presenceCompletedTask!: boolean;
 
   constructor(private taskSrv: TaskService) {
     this.taskSrv.chargeDatas();
     this.getTasks();
+    this.verifyCompletedTask();
   }
 
+  verifyCompletedTask() {
+    let count: number = 0;
+    this.taskSrv.chargeDatas();
+    console.log('lung', this.allTasks.length);
+    if (this.allTasks.length > 0) {
+      this.allTasks.forEach((task) => {
+        if (task.completed) count++;
+      });
+      if (!(count > 0)) this.presenceCompletedTask = false;
+      else this.presenceCompletedTask = true;
+    } else {
+      this.presenceCompletedTask = false;
+    }
+  }
   getCharge() {
     return this.taskSrv.getCharge();
   }
