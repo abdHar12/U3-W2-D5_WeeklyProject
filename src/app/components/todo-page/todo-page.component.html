@@ -1,0 +1,42 @@
+<div id="containerToDoPage">
+  <ng-container *ngIf="!getCharge(); else charging">
+    <div>
+      <ng-container *ngIf="presenceIncompletedTask; else noTasks">
+        <div *ngFor="let task of allTasks">
+          <ng-container *ngIf="!task.completed">
+            <div class="task">
+              <span>{{ task.AllTask }}</span>
+              <div>
+                <button
+                  class="task-buttons"
+                  (click)="removeTask(task.id); verifyIncompletedTask()"
+                >
+                  <i class="bi bi-x"></i>
+                </button>
+                <button
+                  class="task-buttons"
+                  (click)="taskDone(task.id); verifyIncompletedTask()"
+                >
+                  <i class="bi bi-check"></i>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-template #noTasks>
+        <p>Nessun task da completare</p>
+      </ng-template>
+    </div>
+  </ng-container>
+  <ng-template #charging>
+    <p>Caricamento dei tasks in corso...</p>
+  </ng-template>
+  <div>
+    <label for="insert-task">Inserisci il task:</label>
+    <input id="insert-task" type="text" [(ngModel)]="task" />
+    <button (click)="insertTask(); getTasks(); verifyIncompletedTask()">
+      Inserisci
+    </button>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+#containerDonePage {
+  width: 60%;
+  margin-inline: auto;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.task {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+}
+.task {
+  width: 100%;
+  display: flex;
+  padding: 5px;
+  justify-content: space-between;
+}
+.task > div {
+  display: flex;
+  gap: 3px;
+}
+.task-buttons {
+  border-radius: 2px;
+  border: 0px;
+  color: white;
+}
+button.task-buttons:first-of-type {
+  background-color: red;
+}
+button.task-buttons:last-of-type {
+  background-color: rgb(0, 75, 128);
+}
+p {
+  text-align: center;
+  margin-top: 3rem;
+}

@@ -1,0 +1,19 @@
+<div>
+  <a
+    [routerLink]="['']"
+    [routerLinkActive]="'active'"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [ngClass]="{ 'active-link': isBtnActive === 1 }"
+    (click)="toggleBtn(1)"
+  >
+    ToDo</a
+  >
+
+  <a
+    [routerLink]="['/done-page']"
+    [routerLinkActive]="'active'"
+    [ngClass]="{ 'active-link': isBtnActive === 2 }"
+    (click)="toggleBtn(2)"
+    >Done</a
+  >
+</div>
